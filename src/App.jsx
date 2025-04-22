@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReminderForm from './components/ReminderForm'
+import HamburgerMenu from './components/HamburgerMenu'
 import './App.css'
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>ElderAid – Medication Reminder</h1>
+      <HamburgerMenu />
+
+      <h1>ElderCare – Medication Reminder</h1>
       <p className="instructions">
         Please enter the time you need to take your medication and a short message 
         (like "Take blood pressure pill"). The app will store your reminders below.
