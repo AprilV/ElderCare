@@ -7,7 +7,8 @@
   top: 1rem;
   left: 1rem;
   z-index: 1000;
-  color: #333;
+  color: whitesmoke;
+  text-shadow: 0 0 2px #000;
 }
 
 .hamburger-menu {
@@ -16,7 +17,7 @@
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: #ffffff;
+  background-color: whitesmoke;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   z-index: 999;
@@ -31,6 +32,8 @@
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+  color: #fff; /* make it visible */
+  text-shadow: 0 0 2px #000; /* optional, adds contrast */
 }
 
 .hamburger-menu h2 {
@@ -46,6 +49,22 @@
   margin-bottom: 0.75rem;
   font-size: 1rem;
 }
+
+.hamburger-btn {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.hamburger-menu h2 {
+  margin-top: 3rem; /* enough space for button */
+}
+
+
+
+.hamburger-btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
 /* Toggle label */
 .setting-toggle {
   margin-top: 1rem;
