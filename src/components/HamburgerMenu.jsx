@@ -5,17 +5,12 @@ function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [largeText, setLargeText] = useState(false);
   const [highContrast, setHighContrast] = useState(false);
+  const [readableFonts, setReadableFonts] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleLargeText = () => setLargeText(!largeText);
   const toggleHighContrast = () => setHighContrast(!highContrast);
-
-  const [readableFonts, setReadableFonts] = useState(false);
   const toggleReadableFonts = () => setReadableFonts(!readableFonts);
-
-  useEffect(() => {
-    document.body.classList.toggle("readable-fonts-enabled", readableFonts);
-  }, [readableFonts]);
 
   useEffect(() => {
     document.body.classList.toggle("large-text-enabled", largeText);
@@ -25,6 +20,10 @@ function HamburgerMenu() {
     document.body.classList.toggle("high-contrast-enabled", highContrast);
   }, [highContrast]);
 
+  useEffect(() => {
+    document.body.classList.toggle("readable-fonts-enabled", readableFonts);
+  }, [readableFonts]);
+
   return (
     <>
       <button className="hamburger-btn" onClick={toggleMenu} aria-label="Menu">
@@ -33,52 +32,54 @@ function HamburgerMenu() {
 
       {isOpen && (
         <div className="hamburger-menu">
-          <button
-            className="close-btn"
-            onClick={toggleMenu}
-            aria-label="Close Menu"
-          >
+          <button className="close-btn" onClick={toggleMenu} aria-label="Close Menu">
             ×
           </button>
           <h2>Accessibility Settings</h2>
 
           <div className="accessibility-section">
             <h3>Text and Layout</h3>
-            <label htmlFor="largeTextToggle">
-              <input
-                type="checkbox"
-                id="largeTextToggle"
-                checked={largeText}
-                onChange={toggleLargeText}
-              />
-              Use large readable text and spacious layout
-            </label>
+            <div className="toggle-container">
+              <span>Use large readable text</span>
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={largeText}
+                  onChange={toggleLargeText}
+                />
+                <span className="slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="accessibility-section">
             <h3>Color and Contrast</h3>
-            <label htmlFor="highContrastToggle">
-              <input
-                type="checkbox"
-                id="highContrastToggle"
-                checked={highContrast}
-                onChange={toggleHighContrast}
-              />
-              Enable high contrast mode for better visibility
-            </label>
+            <div className="toggle-container">
+              <span>Enable high contrast</span>
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={highContrast}
+                  onChange={toggleHighContrast}
+                />
+                <span className="slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="accessibility-section">
             <h3>Readable Fonts</h3>
-            <label htmlFor="readableFontsToggle">
-              <input
-                type="checkbox"
-                id="readableFontsToggle"
-                checked={readableFonts}
-                onChange={toggleReadableFonts}
-              />
-              Enable high-legibility fonts (Segoe UI, Arial, Verdana)
-            </label>
+            <div className="toggle-container">
+              <span>Use high-legibility fonts</span>
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={readableFonts}
+                  onChange={toggleReadableFonts}
+                />
+                <span className="slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="accessibility-section">
@@ -94,16 +95,14 @@ function HamburgerMenu() {
           <div className="accessibility-section">
             <h3>Screen Reader Mode</h3>
             <p className="placeholder">
-              (auto-enables aria labels or future audio cues – toggle coming
-              soon)
+              (auto-enables aria labels or future audio cues – toggle coming soon)
             </p>
           </div>
 
           <div className="accessibility-section">
             <h3>Audio Alerts</h3>
             <p className="placeholder">
-              (enable simple sound notification for reminders – toggle coming
-              soon)
+              (enable simple sound notification for reminders – toggle coming soon)
             </p>
           </div>
 
